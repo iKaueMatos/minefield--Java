@@ -56,6 +56,10 @@ public class Campo {
         }
     }
 
+    void setCampoAberto(boolean campoAberto) {
+        CampoAberto = campoAberto;
+    }
+
     boolean abrir(){ // por padão esse metodo ira retornar falso caso precisamos tentar abrir um campo
        if(!CampoAberto && !CampoMarcado){ // se caso o campo estiver aberto abre a possibilidade para executar o comando
            CampoAberto = true;
@@ -130,9 +134,12 @@ public boolean isMinado(){
         }else if(CampoAberto && minasNaVizinhaca()> 0){
             return Long.toString(minasNaVizinhaca());
         }else if(CampoAberto){
-            return "";
+            return " ";
         }else{
             return "?";
         }
+    }
+
+    public void alterarMarcacao() {
     }
 }

@@ -23,6 +23,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="Campo-Minado" />
+    <orderEntry type="module" module-name="CampoMinado" />
   </component>
 </module>

@@ -1,5 +1,7 @@
 package src.CampoMinado.Model;
 
+import src.CampoMinado.Controller.ExplosaoException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -26,13 +28,17 @@ public class Tabuleiro {
     }
 
 
-
-//metodo de abrir
     public void abrir(int linha,int coluna){
-        campos.parallelStream().filter(c -> c.getLinha() == linha && c.getColuna() == coluna).findFirst().
-                ifPresent(c -> c.abrir());
-        //findFirst -> abre a possibilidade de retorno de option de List<campo>.
+        try{
+            campos.parallelStream().filter(c -> c.getLinha() == linha && c.getColuna() == coluna).findFirst().
+                    ifPresent(c -> c.abrir());
+            //findFirst -> abre a possibilidade de retorno de option de List<campo>.
+        }catch(ExplosaoException e){
+            campos.forEach(c -> c.setCampoAberto(true));
+            throw  e;
+        }
     }
+
 
     public void alternarMarcacao(int linha,int coluna){
         campos.parallelStream().filter(c -> c.getLinha() == linha && c.getColuna() == coluna).findFirst().
@@ -68,9 +74,11 @@ public class Tabuleiro {
         // que tem no campo
         do {
             //Se a quantidade de minas armadas for igual a quantidade de minas ira sair do laço logo em sequencia
-            minasArmadas = campos.stream().filter(minado).count();
             int aleatorio = (int) ((Math.random() *  campos.size()));
             campos.get(aleatorio).minar();
+            minasArmadas = campos.stream().filter(minado).count();
+
+
         }while(minasArmadas < minas);
     }
 
@@ -88,8 +96,22 @@ public class Tabuleiro {
     public String toString(){
         StringBuilder sb = new StringBuilder(); // Sempre quando tivermos uma quantidade grande de String para serem rederizadas
         //Utilizamos o StringBuilder que possibilita rederizarmos uma quantidade grande de strings
+
+        sb.append("  ");
+        for(int c = 0; c < colunas; c++ ){
+            sb.append(" ");
+            sb.append(c);
+            sb.append(" ");
+        }
+
+        sb.append("\n");
+
+
+
        int i =0;
         for(int l=0; l< linhas;l++){
+            sb.append(l);
+            sb.append(" ");
            for( int c =0 ;c <colunas;c++){
                 sb.append(" ");
                 sb.append(campos.get(i));
