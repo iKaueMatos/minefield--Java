@@ -28,12 +28,12 @@ Para instalar o <Nome projeto>, siga estas etapas:
 
 Linux e macOS:
 ```
-git clone Repositorio
+git clone Repositorio:git@github.com:iKaueMatos/Minefield--Java.git
 ```
 
 Windows:
 ```
-git clone Repositorio
+git clone Repositorio:git@github.com:iKaueMatos/Minefield--Java.git
 ```
 
 ## 🤝 Colaboradores
