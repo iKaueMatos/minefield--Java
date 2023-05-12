@@ -13,7 +13,7 @@ O projeto Finalizado:
 - [x] Tarefa 2 - Criação do metodo da matriz 6x6 juntamente com instaciamento da classe.
 - [x] Tarefa 3 - Criação do metodo toString para exibir seus respectivos dados.
 - [x] Tarefa 4 - Criação da Exceção sair e explodir
-- [x] Tarefa 5
+- [x] Tarefa 5 - Concluido
 
 ## 💻 Pré-requisitos
 
